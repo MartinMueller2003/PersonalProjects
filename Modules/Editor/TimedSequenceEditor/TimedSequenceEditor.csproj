@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{47EA8E72-BEAB-44D0-893D-8F184FCFEF31}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VixenModules.Editor.TimedSequenceEditor</RootNamespace>
+    <AssemblyName>TimedSequenceEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>$(SolutionDir)\Release\Modules\Editor\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>$(SolutionDir)\Release64\Modules\Editor\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)\Vixen.System\Vixen.csproj">
+      <Project>{50B78623-FCF4-48AF-93FF-FA87C937028F}</Project>
+      <Name>Vixen</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog">
+      <HintPath>..\..\..\packages\NLog.2.0.1.2\lib\net40\NLog.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\..\..\Common\Libraries\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AudacityImportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AudacityImportDialog.Designer.cs">
+      <DependentUpon>AudacityImportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutomaticMusicDetection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutomaticMusicDetection.Designer.cs">
+      <DependentUpon>AutomaticMusicDetection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EffectDistributionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EffectDistributionDialog.Designer.cs">
+      <DependentUpon>EffectDistributionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BeatMarkExportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BeatMarkExportDialog.Designer.cs">
+      <DependentUpon>BeatMarkExportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportDialog.Designer.cs">
+      <DependentUpon>ExportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_AddMultipleEffects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_AddMultipleEffects.Designer.cs">
+      <DependentUpon>Form_AddMultipleEffects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Marks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Marks.Designer.cs">
+      <DependentUpon>Form_Marks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EffectRasterizer.cs" />
+    <Compile Include="EffectTimeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EffectTimeEditor.Designer.cs">
+      <DependentUpon>EffectTimeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Effects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Effects.Designer.cs">
+      <DependentUpon>Form_Effects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Grid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Grid.Designer.cs">
+      <DependentUpon>Form_Grid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IntentRasterizer.cs" />
+    <Compile Include="PapagayoDoc.cs" />
+    <Compile Include="MarkManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarkManager.Designer.cs">
+      <DependentUpon>MarkManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarkTapper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarkTapper.Designer.cs">
+      <DependentUpon>MarkTapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParameterEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ParameterEditor.Designer.cs">
+      <DependentUpon>ParameterEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ColorCollectionLibrary_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorCollectionLibrary_Form.Designer.cs">
+      <DependentUpon>ColorCollectionLibrary_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimedSequenceEditor.cs" />
+    <Compile Include="TimedSequenceEditorDescriptor.cs" />
+    <Compile Include="TimedSequenceEditorEffectEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimedSequenceEditorEffectEditor.Designer.cs">
+      <DependentUpon>TimedSequenceEditorEffectEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimedSequenceEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimedSequenceEditorForm.Designer.cs">
+      <DependentUpon>TimedSequenceEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimedSequenceEditorResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimedSequenceEditorResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TimedSequenceElement.cs" />
+    <Compile Include="TimedSequenceRowLabel.cs" />
+    <Compile Include="Form_ToolPalette.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ToolPalette.Designer.cs">
+      <DependentUpon>Form_ToolPalette.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Undo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\magnet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AudacityImportDialog.resx">
+      <DependentUpon>AudacityImportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutomaticMusicDetection.resx">
+      <DependentUpon>AutomaticMusicDetection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EffectDistributionDialog.resx">
+      <DependentUpon>EffectDistributionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BeatMarkExportDialog.resx">
+      <DependentUpon>BeatMarkExportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportDialog.resx">
+      <DependentUpon>ExportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_AddMultipleEffects.resx">
+      <DependentUpon>Form_AddMultipleEffects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Marks.resx">
+      <DependentUpon>Form_Marks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EffectTimeEditor.resx">
+      <DependentUpon>EffectTimeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Effects.resx">
+      <DependentUpon>Form_Effects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Grid.resx">
+      <DependentUpon>Form_Grid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarkManager.resx">
+      <DependentUpon>MarkManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarkTapper.resx">
+      <DependentUpon>MarkTapper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParameterEditor.resx">
+      <DependentUpon>ParameterEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorCollectionLibrary_Form.resx">
+      <DependentUpon>ColorCollectionLibrary_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimedSequenceEditorEffectEditor.resx">
+      <DependentUpon>TimedSequenceEditorEffectEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimedSequenceEditorForm.resx">
+      <DependentUpon>TimedSequenceEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimedSequenceEditorResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TimedSequenceEditorResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ToolPalette.resx">
+      <DependentUpon>Form_ToolPalette.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\BaseSequence\BaseSequence.csproj">
+      <Project>{8D6C81FD-5117-414A-8985-7BD5AA0F5135}</Project>
+      <Name>BaseSequence</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Controls\Controls.csproj">
+      <Project>{A54FB6A1-A9C3-488C-B961-41B8DBC81B36}</Project>
+      <Name>Controls</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Resources\Resources.csproj">
+      <Project>{F7A80169-6310-4585-9D58-A6F6F5C5B380}</Project>
+      <Name>Resources</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\App\ColorGradients\ColorGradients.csproj">
+      <Project>{1b189b36-02af-4a57-9e1b-6dc833212725}</Project>
+      <Name>ColorGradients</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\App\Curves\Curves.csproj">
+      <Project>{f0ba7127-61b4-453a-802b-abcb5a0d3d54}</Project>
+      <Name>Curves</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\App\LipSync\LipSyncApp.csproj">
+      <Project>{e3689e21-2204-48b9-8370-d45ee4a23451}</Project>
+      <Name>LipSyncApp</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\App\VirtualEffect\VirtualEffect.csproj">
+      <Project>{02072E53-7A01-423C-914E-BF785BA4F5CB}</Project>
+      <Name>VirtualEffect</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Effect\LipSync\LipSync.csproj">
+      <Project>{6de9a846-ac25-40b6-b8b2-b306ec9f2569}</Project>
+      <Name>LipSync</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Media\Audio\Audio.csproj">
+      <Project>{4243BA4C-6371-4DD1-8A1D-675BED5322AF}</Project>
+      <Name>Audio</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Property\Color\Color.csproj">
+      <Project>{73068a83-b3b7-4a2c-923d-71c7886cd5e3}</Project>
+      <Name>Color</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Sequence\Timed\Timed.csproj">
+      <Project>{45E1228A-F714-41D5-BB9B-A776F2B23143}</Project>
+      <Name>Timed</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

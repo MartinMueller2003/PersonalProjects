@@ -1,0 +1,12 @@
+bin/
+obj/
+*.pdb
+_ReSharper*
+*.exe
+*.exe.*
+*.user
+*.suo
+/Output
+/Release
+/Release64
+Vixen 3*

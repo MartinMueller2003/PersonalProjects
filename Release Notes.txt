@@ -1,0 +1,459 @@
+
+== 3.0.10 ============================
+
+New features:
+
+- new single setup form for display configuration! No more setting up displays in 3 parts -- elements, controllers, patching -- it's all done in one page!
+- added virtual Helix controller for exporting data
+- added K8055 controller
+- extra mark manipulation in the UI: can select marks in the ruler, delete them with keyboard shortcuts
+- extra sequencer UI improvements: shortcuts, right-click context menu, disable snapping
+- added version control module to track files
+- improved instrumentation and performance monitoring
+- improvements to the E131 controller, to allow customization of how data is re-transmitted and/or buffered
+- added looping in the sequence editor
+- added delayed playback in the sequence editor
+
+
+
+Fixups:
+
+- Improvements to serialization if there is 'bad' data in the config files
+- many small improvements/fixups to the preview
+- many small improvements/fixups to the nutcracker effect
+- performance improvements
+
+
+
+== 3.0.9 ============================
+
+New features:
+
+- a new and improved Scheduler and Show module!  See the forums and videos for more info.
+- More performance improvements to reduce CPU usage and memory usage.
+- RDS module improvements: supports the new VAST application, and other improvements
+- Added the Elexol USB I/O controller
+- Vixen 2 sequence importing: can now repeat elements when dragging to the mapping window (eg. for multiple color mappings).
+- Sequencer UI improvements: Context menu & options
+- Sequencer UI improvements: Dockable windows (with a vertical effect list)
+- Sequencer UI improvements: marks in the main window, and mark operations in the ruler
+- Split the application to have separate 32-bit and 64-bit versions, to allow for larger memory usage on high-end machines
+
+
+Fixups:
+
+- The preview was not opening at the correct size sometimes, or with a correct background; now fixed.
+- Fixes for importing audacity marks
+- Fixes issues with 'lost' elements in the config
+- Fixes with preview rendering of discrete colored elements
+- Fixes to output a more accurate value (eg. 8-bit value) when converting a color to a value
+- Fixed an issue where autoplay could leave some elements "hung" or not turning off
+- Fixed an issue with V2 sequence imports where it would read in too much data and try to map to non-existant elements.
+
+
+
+== 3.0.8 ============================
+
+New features:
+
+- A ridiculous amount of speedups to the entire application: UI responsiveness, rendering/drawing speed in the sequencer, preview performance speed, and so on.  For example, effect rendering is now performed in the background in another thread.  The application is now much more responsive and usable.
+- A similiarly ridiculous amount of improvements to memory usage; particularly where nutcracker effects are used.
+- Added a 'webserver' module, to allow basic control via a web interface.
+- Added support for "Elexol" controllers.
+- Added an RDS and Launcher control modules.
+- Added support for a Direct 2D rendering mode for the preview (which has been temporarily disabled to ensure stability for all users, until we can get more testing performed)
+- Changed logging system to use NLog, instead of a custom homebrew system
+- Added support to be able to pick a specific audio output device in the sequencer
+
+
+Fixups:
+
+- better handing of default values for all effects
+- many minor preview fixups
+- Some nutcracker effects would render 'backwards'
+- Some preview items (eg. nets) would not draw/render properly
+- The positioning/order of some preview shapes (eg. squares around windows) has been improved
+- fixed some crashes when opening/closing sequences at unconventional times (during playback, paused, etc.)
+
+
+
+== 3.0.7 ============================
+
+New features:
+
+- Discrete color support. There is now a 'color' property that can be added to an element, to define how color
+  should function for that element.  Each element can be configured in three ways:
+    * Single color
+    * Multiple independent (discrete) colors
+    * full color (eg. a mixing RGB light)
+  (If not configured with the color property, an element is assumed to be full color.)
+  
+  If single or discrete colors are selected and configured, when configuring an effect against that element, only
+  the available colors will be visible to be used.
+
+
+- Color breakdown filter:  added 'mixing' option, to complement the discrete color property (above). If enabled,
+  the input color will be 'mixed' by using proportions of the configured colors. This would be for items like RGB
+  pixels or floods, which can 'mix' colors.  If the option is disabled, a color will only be output from the filter
+  if it matches the input color EXACTLY.  This is intended for operation with discrete (or single) color items.
+  
+  For example, if you had a mixing RGB color breakdown filter, and the input color was purple, then the filter would
+  output proportions of blue and red to get the desired color.  However, if it was a non-mixing RGB color filter, it
+  only output colors that are Red, Green, or Blue exactly.  (Presumably, you have a tree with R/G/B strings on it,
+  so only want those exact colors.)
+
+
+- Better support for importing Vixen 2.x sequences!  Will now support making 'maps' for 2.x channels to 3.x elements.
+  These can be saved and reused for future importing of sequences.  Also supports color: you can now specify the color
+  of the incoming data/effects, so the V3 data will be generated with effects of the appropriate color.
+
+
+- New 'wipe' effect, and associated 'position' property for elements (to define a location in the display).
+
+- More Nutcracker improvements and effects: 'Movie' effect, speed improvements
+
+- Sequencer responsiveness and speed improvements -- backgroun rendering, speed fixes, memory fixes, etc.
+
+- New 'alternating' effect (thanks Gizmohd!)
+
+- easy setup for element 'templates' (pixel grid, and megatree) -- right click on the tree in the Element Setup
+
+- starting to add icons for effects in the sequencer
+
+- audacity support in the mark manager
+
+- added framework needed for launcher output and RDS output plugins (not yet complete)
+
+- added a 'debug' controller to see specific values/commands that are going to the controller
+
+
+
+fixups/bugs:
+
+- UI 'flow' fixups in sequence editor
+- display preview shouldn't hang when created on some (unlucky) machines (thanks to dlovely for help debugging!)
+- fixed bug where effects might 'stack up' when pausing and restarting while an effect is displayed 
+- information about effects in the sequencer are now displayed when hovering over an effect, not permanently
+- efficiency improvements for rendering of spin, chase and nutcracker effects: (not generating useless data, etc.)
+- E1.31 module fixups, to turn off channels properly
+- Element Tree in setup: now more efficient when rendering, and won't hang when grouping hundreds of elements
+- Fixed DLL references for output modules that use the parallel port (Hill320, 595)
+
+
+.... and possibly more that we've forgotten!
+
+
+
+
+== 3.0.6 ============================
+
+
+- Display preview! There's now a new display preview module, written by Derek Backus. Still in development, so feel free to give feedback.
+- Nutcracker effects! Derek's also been hard at work on Nutcracker effects, which are fresh off the blocks. Still in development; feedback welcome.
+
+- Huge performance improvements, for application responsiveness, UI improvements, etc.  Still more to go...
+
+- Controllers: 595 and Hill320 fixups to get working.
+
+- Sequencer: mono audio files now work.
+- Sequencer: audio detection/frequency detection implemented.
+
+- Admin: setup dialogs won't prompt to save changes if nothing has changed.
+
+- There's now an installer for the application.
+
+
+
+
+== 3.0.5 ============================
+
+
+- Importer: A Vixen 2.x sequence importer has been created and added; you can now open *.vix files. Improvements still need
+            to be made to the mapping to 3.x elements and colors, but the basic concepts are there.
+
+- General: A new Vixen 3 logo and application icons have been created!
+- General: the term "Channel" has been renamed to "Element" (to describe a logical part of a display, such as a
+           minitree, prop, etc.). The term "Channel" is now used for the outputs of a controller; ie. to bring it
+           in line with how the community uses the term.
+- General: Corrupt or empty system config files no longer cause errors on startup; they get moved aside, and a blank systemconfig loaded.
+
+- Controllers: A FireGod Dimmer control module has been added. Still needs user testing.
+- Controllers: All serial controllers (Renard, Generic, Firegod) have improved serial port handling
+               (retrying open serial ports, IN USE markers, etc.)
+
+- Display Preview: preview window can't be accidentally closed (the instance must be disabled in the Admin panel instead)
+
+- Sequencer: A pseudo-grid has been added. To add a grid to a sequence, go to the Mark Manager, add a new mark collection, and
+             use the "Generate Grid" button. It will ask for the time period (with 50ms as default), and generate regular
+             marks to correspond to that time period. Effects should snap to the new marks.
+- Sequencer: opening a saved sequence with audio properly draws the waveform on open
+- Sequencer: adding audio to a sequence that doesn't have it doesn't get the rows out of alignment
+- Sequencer: audio waveform doesn't block the UI while it's rendering, and is much more usable (especially while zooming)
+- Sequencer: Twinkle effect: can't set the coverage to 0% anymore (now a 1% minimum, as 0% causes errors)
+- Sequencer: Fixed a spurious error dialog (MouseUp in MouseState) that was accidentally getting called.
+- Sequencer: click-and-drag scrolling in the sequencer now works when the sequencer is hard on the right side of the monitor
+- Sequencer: The pause button now works properly, and doesn't cause errors when trying to resume
+- Sequencer: Effects: some effects have had a "depth" setting added, to control how many layers deep the effect should apply.
+
+- Admin: The setup dialogs will now warn if you cancel out of them (ie. losing changes).
+- Admin: Elements & Groups Form: Fixed an issue when when dragging to copy and paste with the mouse (last element didn't copy).
+
+
+
+== 3.0.4 ============================
+
+(Versioning has now dropped the 4th digit.)
+
+- When serializing sequences, module data that is for non-existant modules is now discarded.
+- Display preview update increased to 50ms from 10ms. Not currently customizable.
+- Scheduler improvements to cache programs and prerender all sequences.
+- updated OpenDMX controller module.
+- Administrative cleanups of projects, namespaces, public repository, etc.
+- Fixed up a potential crash in the Chase effect.
+- Added Generic Serial controller module. (macebobo)
+- Added a Candy Cane shape to the display preview (alphageek)
+- Removed the "Generate Channels" button from the controller form; it encouraged bad configuration.
+
+
+
+== 3.0.3.1 ============================
+
+VIX-135: Locking the instance collection in ReleaseContexts when clearing it.
+
+VIX-111, VIX-138: Making the data directory portable.
+
+VIX-133: Color Filter mapping now working and copy does not work.
+
+Fixed bug where updating chained filters may throw a null reference on startup.
+
+VIX-138: Better null handling in the channel manager for a lookup.
+
+Updated the audio media module to support variable speeds.
+
+Updated TimedSequenceEditor to support changing the speed of the timing source, when the timing source supports it.
+
+Changed where IsRunning is being set to true in SequenceExecutor.cs so that the media will have been started by that time.
+
+ColorBreakdown Filter: added extra template options from forum requests (RGxB, and GRBW).
+
+Filter & Patching setup form: Added a "high quality rendering" checkbox. Doesn't make much difference, but might help on high shape counts.
+
+VixenApplication: fixed issue when creating filters through the wizard where the module data wasn't being duplicated properly.
+
+Added DimmingCurve post filter.
+
+Added OpenDMX module, care of chilloutdocdoc and piense on the DIYC forums. (thanks guys)
+
+DisplayPreview: added error handling for missing background images.
+
+VixenApplication: improved load time for the filter setup form when there's *heaps* of shapes to draw.
+
+VIX-137: DisplayPreview: better null handling on channel updates.
+
+Twinkle: don't make data for channels that have already had data generated for.
+
+Chase: Fixed error with rendering, potentially throwing an exception.
+
+Timeline Control Grid: fixed a few rendering issues/hangs/etc. Pretty messy and hacky, but I think it's time for a control rewrite next year. This at least stops the hangs.
+
+Chase: render more finely, to pick up quick chases.
+
+Twinkle: added another color option to spread the color across the subchannels.
+
+TimedSequenceEditor: added negative time support in the mark manager.
+
+TimelineControl Grid: dodgy hack to avoid any unhandled hangs from the drawing problems. Temporary fix.
+
+ColorGradients & Curves: added extra shortcut keys to editors, and persist the library selector window size/position.
+
+TimedSequenceEditor: add support for editing multiple elements at once (only of the same type).
+
+Curves: add null library check, to avoid potential nasty bug on shutdown: if the curves library module is closed before another module that is using it (eg dimming curve), it can barf pretty hard.
+
+Added a "data_dir" command-line argument for overriding the root data directory and moved data loading to before the initialization of the framework.
+Use:
+  data_dir=c:\path\where\you\want\data
+  data_dir="c:\path where you want data"
+Notes:
+1. The VixenApplication app will default back to the default data directory if it cannot find its data file within this path.
+2. This path is *the* data path for both the application and the framework.  This means that if it's a new path for the framework, it's going to build out its directory hierarchy.
+3. Do not put spaces around the equals sign!  If the data directory path does have spaces, you can put quotes around the path, but around the path ONLY.  Example:  data_dir="c:\vixen data"
+
+
+
+== 3.0.3.0 ============================
+
+Preview improvements and fixes.
+
+E1.31 module included.  Untested, but claimed to work.
+
+"Simple" scheduler module included.  Sequence execution tested, program management and execution not tested.  Still subject to future changes.
+
+Lots of fixes to the timed sequence editor.
+
+Lots of fixes to the channel config form.
+
+Interpolator precision fix.
+
+LightingValue now makes use of the alpha channel.
+
+
+== 3.0.2.2 ============================
+
+Fix for loading a sequence from a non-qualified file path.
+
+Moved user script initialization outside of the script's execution thread so that execution is considered "started" when Play is actually called.
+
+Minor fixes to error handling and null-checking when stopping the system with a busted config.
+
+Fixed issue when loading Preview modules: was looking for the wrong attributes.
+
+When playing from an effect buffer, reset the last read/write counters when starting fresh.
+
+Fixed sequence data sort issue.
+
+Audio waveform visual in the timed sequence editor.
+
+
+== 3.0.2.1 ============================
+
+Added dataflow component circular dependency checking.
+
+Added naming templates and generators.
+
+Module store serialization fixes.
+
+Refactoring of system file migration.
+
+A plethora of patching UI fixes.
+
+Fixes for SetLevel effect.
+
+Timed sequence-type fixes.
+
+Timed sequence serialization fixes.
+
+The beginning of a patching wizard...feel free to provide feedback.
+
+
+== 3.0.2.0 ============================
+
+Data handling changes.  HUGE!
+See http://doityourselfchristmas.com/forums/showthread.php?22100-September-2012-3-0-2-0
+
+New configuration dialog in the admin app to accommodate filters and data flow.
+
+Output device refactoring.  They are mostly internal, but there are some external changes.  All modules in the git repo have been updated.
+
+Added a ValueTypes common assembly for commonly-used types of data, such as percentages and file paths.  This is to prevent modules from redefining similar kinds of data in different ways and having to create editors specifically for themselves.  An editor for any of these common types (there are only two so far) can be used for any effect that uses that type.
+
+Added an Index member to outputs.  This is set when the output is instantiated and is not modifiable.
+
+Added VixenSystem.Filters for the new filter layer.
+
+Added VixenSystem.DataFlow for managing the data flow from channel to output through the filter layer.
+
+Added VixenSystem.OutputControllers, VixenSystem.SmartOutputControllers, and VixenSystem.Previews for specific handling of those device types.
+
+Added VixenSystem.ControllerManagement and VixenSystem.OutputDeviceManagement for generalized handling of those device types.  This allows for operations such as VixenSystem.ControllerManagement.StartAll() which affects both OutputControllers and SmartOutputControllers.
+
+Previews now receive intent states instead of commands.
+
+Added non-static data store to ModuleStore.xml.
+
+System-level module data (such as for controllers) has been pulled out of SystemConfig.xml and put into ModuleStore.xml.
+
+Fixed CPU usage statistic in the admin app.
+
+
+
+
+== 3.0.1.8 ============================
+
+Handling BadImageFormatException explicitly to allow non-assembly DLLs to reside in the module directories.
+Moved some non-assembly libraries to the application root directory because that's where they have to be to work.
+
+
+********************
+******************** Modules have been split from the core source repository at this point.
+********************
+
+
+== 3.0.1.7 ============================
+
+Changes for sequence and language modules.
+
+
+== 3.0.1.6 ============================
+
+How come there hasn't been an update in so long?  Well...
+
+
+Removed the "Runtime Behavior" module type.  They will be doing their phoenix impression at a later date.
+
+The "Sequence" module type is now the "SequenceType" module type.  This is a significant change, so it's detailed below.  * THIS IS A BREAKING CHANGE. *
+
+New SequenceContext and some changes to how execution contexts are requested and fulfilled.
+
+Slightly revamped data sourcing model for contexts.
+
+Existing timed and script sequence types have been reimplemented as modules.
+
+Expansion of service classes to better serve up core services through Vixen.Services. :)
+(Okay, okay...this is the start of a consolidation effort to put all available consumer services in one easy-to-find place.)
+
+
+
+* Sequence => Sequence Type Module Change: *
+
+This removes any concrete definition of a sequence from the core assembly and puts it entirely into modules.  The core assembly defines a sequence interface, as well as other interfaces necessary to the sequence type module, but there is no sequence class defined.  That's the job of the module.  This means:
+
+GOOD: Sequences can be defined more freely now, within certain limits defined by the interface (e.g. still have to work with effect data, sequence filters).
+
+MAYBE SCARY: The module is now responsible for everything having to do with that sequence type.
+
+Since the module now defines the sequence class, it also needs to define several other things:
+
+1. How that sequence will be stored.
+
+The sequence-type module's data class will be used to define how a sequence will be stored.  There is a base class to handle the mundane members of the ISequence interface, but it's up to the module to extend it to define any additional members.
+
+2. How older sequence files of that type will be brought up to date.
+
+Versioning is a requirement of all files.  When a sequence is opened and it's not of the latest version, the module needs to handle bringing it up through intervening versions to make that sequence current.
+
+3. The biggy: How the sequence is executed.
+
+It's through this that everything is told that a sequence is starting, that it's ended, what rules its timing...everything.
+
+NOTE:
+Like we said, it may be weeks between updates because of large-granular changes like this that are pretty core changes.  Not that we aim to do core changes at this point, but a conceived real-life use demanded that it be attempted.
+
+
+== 3.0.1.5 ============================
+
+Brought back effect preview rendering in the editor, but only for effects that use LightingValue commands.  So far, that's all of the ones that are in the package.
+
+
+== 3.0.1.4 ============================
+
+Added abstraction for output device update signaling.
+
+
+== 3.0.1.3 ============================
+
+Removed Write() from Vixen.Execution.  Replaced it with a formalized "live" context available by calling VixenSystem.Contexts.GetSystemLiveContext().
+
+
+== 3.0.1.2 ============================
+
+Changed the data directory to "Vixen 3" to avoid clashing with 2.x.
+Removed TestPreview.dll from the build.
+
+
+== 3.0.1.1 ============================
+
+Spin and twinkle effect updates so they will work with the new changes.
+
+
+
